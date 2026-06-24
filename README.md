@@ -111,8 +111,8 @@ GET http://localhost:8000/api/companies/1
 ### Employees List
 ![Employees List](screenshots/employees-list.png)
 
-### API Response (Postman)
-![API Response](screenshots/api-response.png)
+### Employees List (Empty State)
+![Employees Empty](screenshots/employees-empty.png)
 
 ---
 
