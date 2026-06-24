@@ -1,17 +1,26 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+        <x-page-heading>{{ __('Dashboard') }}</x-page-heading>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <x-card>
+                <p class="text-sm text-gray-700">{{ __("You're logged in!") }}</p>
+
+                <div class="grid grid-cols-1 gap-4 mt-6 sm:grid-cols-2">
+                    <a href="{{ route('companies.index') }}"
+                        class="flex items-center justify-between p-4 transition border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50">
+                        <span class="text-sm font-medium text-gray-800">Manage Companies</span>
+                        <span class="text-blue-600">→</span>
+                    </a>
+                    <a href="{{ route('employees.index') }}"
+                        class="flex items-center justify-between p-4 transition border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50">
+                        <span class="text-sm font-medium text-gray-800">Manage Employees</span>
+                        <span class="text-blue-600">→</span>
+                    </a>
                 </div>
-            </div>
+            </x-card>
         </div>
     </div>
 </x-app-layout>

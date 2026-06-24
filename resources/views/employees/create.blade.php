@@ -1,51 +1,65 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800">Create Employee</h2>
+        <x-page-heading>Create Employee</x-page-heading>
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow rounded-lg p-6">
+            <x-card>
                 <form action="{{ route('employees.store') }}" method="POST">
                     @csrf
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700">First Name *</label>
-                        <input type="text" name="first_name" value="{{ old('first_name') }}"
-                            class="mt-1 block w-full border rounded-md p-2">
-                        @error('first_name') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
+
+                    {{-- First Name --}}
+                    <div class="mb-5">
+                        <x-input-label for="first_name">First Name <span class="text-red-500">*</span></x-input-label>
+                        <x-text-input id="first_name" type="text" name="first_name" :value="old('first_name')" placeholder="Jane" />
+                        <x-input-error :messages="$errors->get('first_name')" />
                     </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700">Last Name *</label>
-                        <input type="text" name="last_name" value="{{ old('last_name') }}"
-                            class="mt-1 block w-full border rounded-md p-2">
-                        @error('last_name') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
+
+                    {{-- Last Name --}}
+                    <div class="mb-5">
+                        <x-input-label for="last_name">Last Name <span class="text-red-500">*</span></x-input-label>
+                        <x-text-input id="last_name" type="text" name="last_name" :value="old('last_name')" placeholder="Doe" />
+                        <x-input-error :messages="$errors->get('last_name')" />
                     </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700">Company</label>
-                        <select name="company_id" class="mt-1 block w-full border rounded-md p-2">
-                            <option value="">-- None --</option>
+
+                    {{-- Company --}}
+                    <div class="mb-5">
+                        <x-input-label for="company_id">Company</x-input-label>
+                        <x-select id="company_id" name="company_id">
+                            <option value="">— None —</option>
                             @foreach($companies as $company)
-                                <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>
+                                <option value="{{ $company->id }}" @selected(old('company_id') == $company->id)>
                                     {{ $company->name }}
                                 </option>
                             @endforeach
-                        </select>
+                        </x-select>
+                        <x-input-error :messages="$errors->get('company_id')" />
                     </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" name="email" value="{{ old('email') }}"
-                            class="mt-1 block w-full border rounded-md p-2">
+
+                    {{-- Email --}}
+                    <div class="mb-5">
+                        <x-input-label for="email">Email</x-input-label>
+                        <x-text-input id="email" type="email" name="email" :value="old('email')" placeholder="jane@email.com" />
+                        <x-input-error :messages="$errors->get('email')" />
                     </div>
+
+                    {{-- Phone --}}
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700">Phone</label>
-                        <input type="text" name="phone" value="{{ old('phone') }}"
-                            class="mt-1 block w-full border rounded-md p-2">
+                        <x-input-label for="phone">Phone</x-input-label>
+                        <x-text-input id="phone" type="text" name="phone" :value="old('phone')" placeholder="+60 12-345 6789" />
+                        <x-input-error :messages="$errors->get('phone')" />
                     </div>
-                    <div class="flex justify-between">
-                        <a href="{{ route('employees.index') }}" class="text-gray-600">Cancel</a>
-                        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded">Create</button>
+
+                    {{-- Actions --}}
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                        <a href="{{ route('employees.index') }}" class="text-sm text-gray-500 hover:text-gray-700">
+                            ← Back to Employees
+                        </a>
+                        <x-primary-button>Create Employee</x-primary-button>
                     </div>
                 </form>
-            </div>
+            </x-card>
         </div>
     </div>
 </x-app-layout>
