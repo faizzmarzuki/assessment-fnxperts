@@ -1,4 +1,4 @@
-# FNXPERTS Mini-CRM
+# FNXPERTS Assessment
 
 A Laravel-based admin panel to manage companies and their employees, built as part of the FNXPERTS SDN. BHD. Web Developer Assessment.
 
@@ -83,19 +83,19 @@ GET http://localhost:8000/api/companies/1
 ```json
 {
   "id": 1,
-  "name": "Acme Corp",
-  "email": "info@acme.com",
-  "logo": null,
-  "website": "https://acme.com",
-  "employee_count": 3,
+  "name": "Test Item",
+  "email": "test@gmail.com",
+  "logo": "logos/example.png",
+  "website": null,
+  "employee_count": 1,
   "employees": [
     {
       "id": 1,
       "first_name": "John",
-      "last_name": "Doe",
+      "last_name": "Legend",
       "company_id": 1,
-      "email": "john@acme.com",
-      "phone": "012-345-6789"
+      "email": "john.legend@wd.com",
+      "phone": "+621234567890"
     }
   ]
 }
@@ -108,11 +108,14 @@ GET http://localhost:8000/api/companies/1
 ### Companies List
 ![Companies List](screenshots/companies-list.png)
 
+### Companies — Create Form
+![Create Company](screenshots/companies-create.png)
+
 ### Employees List
 ![Employees List](screenshots/employees-list.png)
 
-### Employees List (Empty State)
-![Employees Empty](screenshots/employees-empty.png)
+### Employees — Create Form
+![Create Employee](screenshots/employees-create.png)
 
 ---
 
